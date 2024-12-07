@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/style3') %>
+
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header id="header">
+            <h1>LarChat</h1>
+        </header>
+
+        <!-- Chat List -->
+        <main id="chat-list">
+            <% for (let index=0; index < chats.length; index++) { %>
+                <a href="/chats/<%= userId %>/<%= chats[index].chatid %>" style="text-decoration: none;">
+                <div class="chat-item" >
+
+                    <img src="https://via.placeholder.com/50" alt="Chat Icon" class="chat-image">
+                    <div class="chat-details">
+                        <h3 class="chat-name">
+                            <%= chats[index].name %>
+                        </h3>
+                        <p class="chat-preview"><%= chats[index].chatid %></p>
+                    </div>
+                </div>
+                </a>
+                <% } %>
+        </main>
+
+        <!-- Add New Chat Button -->
+        <footer id="footer">
+            <button id="add-chat-button">ADD NEW CHAT</button>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Enter Chat ID</h2>
+            <form action="/addchat" method="post">
+                <input type="hidden" name="id" value="<%= userId %>">
+                <input type="text" name="chatid" id="chat-id-input" placeholder="Enter chat ID here">
+                <button id="save-chat-button">Save</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("modal");
+            const addChatButton = document.getElementById("add-chat-button");
+            const closeButton = document.querySelector(".close-button");
+
+            // Show the modal
+            addChatButton.addEventListener("click", () => {
+                modal.style.display = "flex";
+            });
+
+            // Hide the modal
+            closeButton.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+
+            // Save chat button functionality (optional)
+            const saveChatButton = document.getElementById("save-chat-button");
+            
+        });
+    </script>
+</body>
+
+</html>

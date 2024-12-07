@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LarChat: Sign Up and Login Page">
+    <title>Sign Up & Login</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div id="body">
+        <!-- Login Form -->
+        <div class="main-comp" id="login-form">
+            <h2>Login</h2>
+            <form action="/login" method="post">
+                <div>Username: <input type="text" name="username" required></div>
+                <div>Password: <input type="password" name="password" required></div>
+                <button>Login</button>
+            </form>
+            <p class="form-footer">New user? <a href="#" id="show-signup">Sign up here</a></p>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div class="main-comp" id="signup-form" style="display: none;">
+            <h2>Sign Up</h2>
+            <form action="/signup" method="post">
+                <div>Username: <input type="text" name="username" required></div>
+                <div>Password: <input type="password" name="password" required></div>
+                <div>Confirm Password: <input type="password" name="confirm_password" required></div>
+                <button>Sign Up</button>
+            </form>
+            <p class="form-footer">Already have an account? <a href="#" id="show-login">Login here</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Toggle between Login and Sign Up forms
+        document.getElementById('show-signup').addEventListener('click', function() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'block';
+        });
+
+        document.getElementById('show-login').addEventListener('click', function() {
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

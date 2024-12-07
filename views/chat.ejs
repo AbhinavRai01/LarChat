@@ -1,0 +1,32 @@
+<html lang="en">
+    <%- include('partials/style4') %>
+<body>
+    <div id="app">
+        <!-- Chat Header with Image -->
+        <header id="header">
+            <img src="https://via.placeholder.com/50" alt="Chat Image" class="chat-image">
+            <h1><%= chatid %></h1>
+        </header>
+
+        <!-- Chat Messages -->
+        <main id="chat-messages">
+            <% for (let index = 0; index < messages.length; index++) { %>
+            <div class="message">
+                <div class="username"><%= messages[index].sender %>:</div>
+                <div class="message-content"><%= messages[index].message %></div>
+            </div>
+            <% } %>
+        </main>
+
+        <!-- Message Input -->
+        <footer id="footer">
+            <form action="/sendmessage" method ="post" style="width: 100%;">
+                <input type="hidden" name="sender" value="<%= sender %>">
+                <input type="hidden" name="chatid" value="<%= chatid %>">
+                <input type="text" name="message" id="message-input" placeholder="Type a message...">
+            <button id="send-button">Send</button></form>
+        </footer>
+    </div>
+
+</body>
+</html>
